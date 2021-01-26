@@ -1,6 +1,7 @@
 import r2pipe
+import sys
 
-class Fcn:
+class Function:
 	def __init__(self, call_str):
 		split = call_str.split(' ')
 		self.addr = split[2]
@@ -20,17 +21,21 @@ class Fcn:
 	def __repr__(self):
 		return self.__str__()
 
-r2 = r2pipe.open("client")
+r2 = r2pipe.open(sys.argv[1])
 r2.cmd("aaa")
 
 base = "sym.parse_args"
 
 print("#### find calls")
 
-fcns = set(map(Fcn, r2.cmd("axff @ " + base + " | grep '^C'").split('\n')[:-1]))
+fcns = set(map(Function, r2.cmd("axff @ " + base + " | grep '^C'").split('\n')[:-1]))
 
 print(fcns)
 
 print("#### find mov in function")
 
 print(r2.cmd("pif @ " + base + " | fgrep mov"))
+
+
+# function start: afo <name>
+# function end: last address of afbr <name>
