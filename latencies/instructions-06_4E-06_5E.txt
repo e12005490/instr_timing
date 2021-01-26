@@ -1,0 +1,22 @@
+VPMASKMOVD/Q ymm, msk_0, [base+index]     >200
+VPGATHERDD/PS xmm, [vi128], xmm           ~20
+VPGATHERQQ/PD xmm, [vi128], xmm           ~18
+VPGATHERDD/PS ymm, [vi256], ymm           ~22
+VPGATHERQQ/PD ymm, [vi256], ymm           ~20
+RDRAND r64                                Varies
+VSQRTPD ymm1, ymm2                        <18
+VMASKMOVPD/PS ymm, msk_0, [base+index]    >200
+DIVPD xmm, xmm                            14, varies depending on input
+DIVSD xmm, xmm                            14, varies depending on input
+SQRTPD xmm, xmm                           18, varies depending on input
+SQRTSD xmm, xmm                           18, varies depending on input
+DIVPS xmm, xmm                            11, varies depending on input
+DIVSS xmm, xmm                            11, varies depending on input
+SQRTPS xmm, xmm                           13, varies depending on input
+SQRTSS xmm, xmm                           13, varies depending on input
+IMUL r64                                  4 for lower 64 bits, 5 for higher
+IDIV r64                                  Varies
+IDIV r32                                  Varies
+DIV r64                                   Varies
+DIV r32                                   Varies
+MUL r64                                   4 for lower 64 bits, 5 for higher
