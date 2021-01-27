@@ -18,9 +18,11 @@ class Function:
 	def __repr__(self):
 		return self.__str__()
 
-	def instructions(self):
-		pdi = [i for i in r2.cmd("pdi @ " + self.name).split('\n')[:-1]
+	def instructions(self, like = None):
+		cond = " | grep " + like if like else ""
+		pdi = [i for i in r2.cmd("pdi  @ " + self.name + cond).split('\n')[:-1]
 				if i[-1] != ':']
+		print(pdi)
 		return [i for i in map(Instruction, pdi)
 				if self.addr <= i.addr and i.addr <= self.end]
 

@@ -1,7 +1,8 @@
+import sys
 from classes import *
 from util import r2, unhex
 
-base = Function("sym.usage")
+base = Function(sys.argv[2])
 
 print("#### find calls")
 
